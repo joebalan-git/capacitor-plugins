@@ -1,5 +1,5 @@
 {
-  "name": "@capacitor/app-launcher-startActivityForResult",
+  "name": "@capacitor/app-launcher-start-activity-for-result",
   "version": "4.1.1",
   "description": "The AppLauncher API allows to open other apps",
   "main": "dist/plugin.cjs.js",
