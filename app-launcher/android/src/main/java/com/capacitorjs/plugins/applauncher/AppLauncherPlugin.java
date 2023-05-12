@@ -1,14 +1,19 @@
 package com.capacitorjs.plugins.applauncher;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+
+import androidx.activity.result.ActivityResult;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Logger;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.ActivityCallback;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "AppLauncher")
@@ -53,17 +58,21 @@ public class AppLauncherPlugin extends Plugin {
         launchIntent.setData(Uri.parse(url));
 
         try {
-            getActivity().startActivity(launchIntent);
-            ret.put("completed", true);
+            startActivityForResult(call, launchIntent, "activityResult");
         } catch (Exception ex) {
             launchIntent = manager.getLaunchIntentForPackage(url);
             try {
-                getActivity().startActivity(launchIntent);
-                ret.put("completed", true);
+                startActivityForResult(call, launchIntent, "activityResult");
             } catch (Exception expgk) {
                 ret.put("completed", false);
             }
         }
+    }
+
+    @ActivityCallback
+    private void activityResult(PluginCall call, ActivityResult result) {
+        JSObject ret = new JSObject();
+        ret.put("completed", result.getResultCode() == Activity.RESULT_OK);
         call.resolve(ret);
     }
 }
