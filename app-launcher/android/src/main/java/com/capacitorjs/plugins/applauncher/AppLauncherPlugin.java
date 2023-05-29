@@ -65,6 +65,7 @@ public class AppLauncherPlugin extends Plugin {
                 startActivityForResult(call, launchIntent, "activityResult");
             } catch (Exception expgk) {
                 ret.put("completed", false);
+                call.resolve(ret);
             }
         }
     }
