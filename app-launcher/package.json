@@ -1,6 +1,6 @@
 {
   "name": "capacitor-app-launcher-start-activity-for-result",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "The AppLauncher API allows to open other apps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin",
-    "CapacitorAppLauncher.podspec"
+    "CapacitorAppLauncherStartActivityForResult.podspec"
   ],
   "author": "Ionic <hi@ionicframework.com>",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "publish:cocoapod": "pod trunk push ./CapacitorAppLauncher.podspec --allow-warnings"
+    "publish:cocoapod": "pod trunk push ./CapacitorAppLauncherStartActivityForResult.podspec --allow-warnings"
   },
   "devDependencies": {
     "@capacitor/android": "^4.0.0",
